@@ -70,7 +70,7 @@ class Catalogue extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: WebView(
-        initialUrl: "https://www.youtube.com/",
+        initialUrl: "http://www.greenhouse-coffeeshop.com/",
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
@@ -84,7 +84,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: WebView(
-        initialUrl: "https://www.chezbisso.com/",
+        initialUrl: "http://www.greenhouse-coffeeshop.com/nous-contacter",
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
