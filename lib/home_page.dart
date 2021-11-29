@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int? _selectedIndex;
-  final List<Widget> _widgetOptions = [Catalogue(), Contact(), Cgu()];
+  final List<Widget> _widgetOptions = [const Catalogue(), const Contact(), Cgu()];
 
   @override
   void initState() {
@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
       appBar: AppBar(
         title: const Text('Green House'),
