@@ -33,10 +33,6 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         home: Scaffold(
-      appBar: AppBar(
-        title: const Text('Green House'),
-        backgroundColor: Colors.lightGreen,
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex!),
       ),
