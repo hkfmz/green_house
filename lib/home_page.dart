@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         home: Scaffold(
-          
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex!),
       ),
