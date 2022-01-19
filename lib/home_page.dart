@@ -10,54 +10,6 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int? _selectedIndex;
-  final List<Widget> _widgetOptions = [const Catalogue(), const Contact(), Cgu()];
-
-  @override
-  void initState() {
-    _selectedIndex = 0;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    void _onItemTap(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex!),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.lightGreen,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined, color: Colors.lightGreen,),
-            label: 'Catalogue',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_phone_outlined, color: Colors.lightGreen,), 
-              label: 'Contact',
-              
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.my_library_books_outlined, color: Colors.lightGreen,), 
-              label: 'CGU',
-          ),
-        ],
-        currentIndex: _selectedIndex!,
-        onTap: _onItemTap,
-      ),
-    ));
-  }
-}
-
 class Catalogue extends StatelessWidget {
   const Catalogue({Key? key}) : super(key: key);
 
@@ -65,7 +17,7 @@ class Catalogue extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: WebView(
-        initialUrl: "http://www.greenhouse-coffeeshop.com/",
+        initialUrl: "https://www.greenhouse-coffeeshop.com/",
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
@@ -78,7 +30,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: WebView(
-        initialUrl: "http://www.greenhouse-coffeeshop.com/nous-contacter",
+        initialUrl: "https://www.greenhouse-coffeeshop.com/nous-contacter",
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
@@ -89,7 +41,7 @@ class Cgu extends StatelessWidget {
   late WebViewController controller;
 
   void loadLocalHtml() async {
-    
+
     final html = await rootBundle.loadString('assets/index.html');
     final url = Uri.dataFromString(
       html,
@@ -110,5 +62,52 @@ class Cgu extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class _HomePageState extends State<HomePage> {
+  int? _selectedIndex;
+  final List<Widget> _widgetOptions = [const Catalogue(), const Contact(), Cgu()];
+
+  @override
+  void initState() {
+    _selectedIndex = 0;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    void _onItemTap(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+        home: Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex!),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.lightGreen,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined, color: Colors.lightGreen,),
+            label: 'Catalogue',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.contact_phone_outlined, color: Colors.lightGreen,),
+              label: 'Contact',
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.my_library_books_outlined, color: Colors.lightGreen,),
+              label: 'CGU',
+          ),
+        ],
+        currentIndex: _selectedIndex!,
+        onTap: _onItemTap,
+      ),
+    ));
   }
 }

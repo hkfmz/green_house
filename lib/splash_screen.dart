@@ -6,12 +6,9 @@ import 'package:green_house/home_page.dart';
 
 class SplashScreen extends StatefulWidget{
   const SplashScreen({Key? key}) : super(key: key);
-
-
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
-
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
@@ -54,7 +51,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ],
             ),
-
             // const CircularProgressIndicator( 
             //   valueColor:  AlwaysStoppedAnimation<Color>(Colors.orange),
             // ),
