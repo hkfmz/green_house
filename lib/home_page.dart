@@ -41,7 +41,6 @@ class Cgu extends StatelessWidget {
   late WebViewController controller;
 
   void loadLocalHtml() async {
-
     final html = await rootBundle.loadString('assets/index.html');
     final url = Uri.dataFromString(
       html,
@@ -67,7 +66,11 @@ class Cgu extends StatelessWidget {
 
 class _HomePageState extends State<HomePage> {
   int? _selectedIndex;
-  final List<Widget> _widgetOptions = [const Catalogue(), const Contact(), Cgu()];
+  final List<Widget> _widgetOptions = [
+    const Catalogue(),
+    const Contact(),
+    Cgu()
+  ];
 
   @override
   void initState() {
@@ -82,32 +85,41 @@ class _HomePageState extends State<HomePage> {
         _selectedIndex = index;
       });
     }
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex!),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.lightGreen,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined, color: Colors.lightGreen,),
-            label: 'Catalogue',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_phone_outlined, color: Colors.lightGreen,),
-              label: 'Contact',
 
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Center(
+            child: _widgetOptions.elementAt(_selectedIndex!),
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.my_library_books_outlined, color: Colors.lightGreen,),
-              label: 'CGU',
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.lightGreen,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_bag_outlined,
+                  color: Colors.lightGreen,
+                ),
+                label: 'Catalogue',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.contact_phone_outlined,
+                  color: Colors.lightGreen,
+                ),
+                label: 'Contact',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.my_library_books_outlined,
+                  color: Colors.lightGreen,
+                ),
+                label: 'CGU',
+              ),
+            ],
+            currentIndex: _selectedIndex!,
+            onTap: _onItemTap,
           ),
-        ],
-        currentIndex: _selectedIndex!,
-        onTap: _onItemTap,
-      ),
-    ));
+        ));
   }
 }
